@@ -1,14 +1,13 @@
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -22,7 +21,7 @@ public class Message extends DomainEntity {
 	private String title;
 	private Date moment;
 	private String text;
-	private List<String> attachements;
+	private Collection<String> attachements;
 
 	// Constructor
 	public Message() {
@@ -58,11 +57,11 @@ public class Message extends DomainEntity {
 	}
 
 	@ElementCollection
-	public List<String> getAttachements() {
+	public Collection<String> getAttachements() {
 		return attachements;
 	}
 
-	public void setAttachements(List<String> attachements) {
+	public void setAttachements(Collection<String> attachements) {
 		this.attachements = attachements;
 	}
 	//Relationship

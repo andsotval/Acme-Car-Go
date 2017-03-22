@@ -2,11 +2,9 @@ package domain;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -27,7 +25,7 @@ public class OfferOrRequest extends DomainEntity {
 	private String description;
 	private Date moment;
 	private String originPlace;
-	private Coordinates originCoor;
+	//private Coordinates originCoor;
 	private String sourcePlace;
 	//private Coordinates sourceCoor;
 	private Collection<Comment> comments;
@@ -74,7 +72,7 @@ public class OfferOrRequest extends DomainEntity {
 	public void setOriginPlace(String originPlace) {
 		this.originPlace = originPlace;
 	}
-	@Valid
+	/*@Valid
 	@Column(name="originCoor")
 	public Coordinates getOriginCoor() {
 		return originCoor;
@@ -82,7 +80,7 @@ public class OfferOrRequest extends DomainEntity {
 
 	public void setOriginCoor(Coordinates originCoor) {
 		this.originCoor = originCoor;
-	}
+	}*/
 	@NotBlank
 	public String getSourcePlace() {
 		return sourcePlace;

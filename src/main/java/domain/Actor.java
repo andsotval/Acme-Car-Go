@@ -2,7 +2,6 @@
 package domain;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -16,7 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 import security.UserAccount;
 
@@ -24,25 +22,22 @@ import security.UserAccount;
 @Access(AccessType.PROPERTY)
 public abstract class Actor extends DomainEntity {
 
-	//Attributes
+	// Attributes
 	private String fullName;
 	private String email;
 	private String phone;
 	private Collection<Comment> comments;
 
-
-	//Constructor
+	// Constructor
 	public Actor() {
 		super();
 	}
 
-
-	//Getters and Setters
+	// Getters and Setters
 	@NotBlank
 	public String getFullName() {
 		return fullName;
 	}
-
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
@@ -53,16 +48,13 @@ public abstract class Actor extends DomainEntity {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getPhone() {
 		return phone;
 	}
-
 
 	public void setPhone(String phone) {
 		this.phone = phone;
@@ -74,37 +66,45 @@ public abstract class Actor extends DomainEntity {
 		return comments;
 	}
 
-
-	public void setComments(List<Comment> comments) {
+	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
 
-	//Relationships
+	// Relationships
 	private Collection<Message> senders;
 	private Collection<Message> receivers;
-	
+	private UserAccount userAccount;
+
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy="sender")
+	@OneToMany(mappedBy = "sender")
 	public Collection<Message> getSenders() {
 		return senders;
 	}
 
-
 	public void setSenders(Collection<Message> senders) {
 		this.senders = senders;
 	}
+
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy="receiver")
+	@OneToMany(mappedBy = "receiver")
 	public Collection<Message> getReceivers() {
 		return receivers;
 	}
 
-
 	public void setReceivers(Collection<Message> receivers) {
 		this.receivers = receivers;
 	}
-	
 
+	@NotNull
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	public UserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(UserAccount userAccount) {
+		this.userAccount = userAccount;
+	}
 }
