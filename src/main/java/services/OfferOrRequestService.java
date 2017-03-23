@@ -86,4 +86,7 @@ public class OfferOrRequestService {
 	public Double getAverageApplicationsPerOfferOrRequest(){
 		return offerOrRequestRepository.getAverageApplicationsPerOfferOrRequest();
 	}
+	public Collection<OfferOrRequest> getSearch(String text){
+		return offerOrRequestRepository.getSearch(text);
+	}
 }

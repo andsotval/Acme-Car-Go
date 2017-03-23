@@ -14,6 +14,8 @@ import domain.Customer;
 import domain.Message;
 import domain.OfferOrRequest;
 import repositories.CustomerRepository;
+import security.LoginService;
+import security.UserAccount;
 import security.UserAccountService;
 
 @Service
@@ -23,11 +25,10 @@ public class CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-	@Autowired
-	private UserAccountService userAccountService;
 
 	// Supporting services ----------------------------------------------------
-
+	@Autowired
+	private UserAccountService userAccountService;
 	// Constructors -----------------------------------------------------------
 
 	public CustomerService() {
@@ -92,5 +93,22 @@ public class CustomerService {
 	}
 	public Customer getCustomerMoreApplicationsDenied(){
 		return customerRepository.getCustomerMoreApplicationsDenied();
+	}
+	public Customer findByUserAccount(UserAccount userAccount) {
+		Assert.notNull(userAccount);
+
+		Customer result;
+		result = customerRepository.findByUserAccount(userAccount);
+		return result;
+	}
+	public Customer findByPrincipal() {
+		Customer result;
+		UserAccount userAccount;
+		userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		result = findByUserAccount(userAccount);
+		Assert.notNull(result);
+
+		return result;
 	}
 }

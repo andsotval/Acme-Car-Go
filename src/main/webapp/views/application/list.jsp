@@ -19,6 +19,12 @@
 
 	<spring:message code="application.application" var="capplication" />
 	<display:column property="application" title="${capplication}"/>
+	
+	<spring:message code="application.customer" var="ccustomer" />
+	<display:column property="customer" title="${ccustomer}"/>
+	
+	<spring:message code="application.request" var="crequest" />
+	<display:column property="request" title="${crequest}"/>
 
 		
 </display:table>

@@ -19,4 +19,8 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 	// The actors who have posted ±10% the average number of comments per actor.
 	@Query("select a from Actor a where a.comments.size between ((select avg(a.comments.size) from Actor a)-((select avg(a.comments.size) from Actor a)*0.1)) and ((select avg(a.comments.size) from Actor a)+((select avg(a.comments.size) from Actor a)*0.1))")
 	public Collection<Actor> getActorsMoreCommentsByAverage();
+	//Search UserAccount
+    @Query("select a from Actor a where a.userAccount.id = ?1")
+    public Actor findByUserAccountId(int userAccountId);
+
 }
