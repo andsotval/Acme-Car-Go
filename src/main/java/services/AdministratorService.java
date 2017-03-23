@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Administrator;
-
+import domain.Comment;
+import domain.Message;
 import repositories.AdministratorRepository;
+import security.UserAccountService;
 
 @Service
 @Transactional
@@ -18,6 +21,8 @@ public class AdministratorService {
 
 	@Autowired
 	private AdministratorRepository administratorRepository;
+	@Autowired
+	private UserAccountService userAccountService;
 
 	// Supporting services ----------------------------------------------------
 
@@ -30,6 +35,11 @@ public class AdministratorService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Administrator create(){
 		Administrator res= new Administrator();
+		res.setComments(new HashSet<Comment>());
+		res.setReceivers(new HashSet<Message>());
+		res.setSenders(new HashSet<Message>());
+		
+		res.setUserAccount(userAccountService.create("ADMIN"));
 		return res;
 	}
 	

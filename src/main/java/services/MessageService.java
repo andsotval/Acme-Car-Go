@@ -1,12 +1,14 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Actor;
 import domain.Message;
 
 import repositories.MessageRepository;
@@ -30,6 +32,7 @@ public class MessageService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Message create(){
 		Message res= new Message();
+		res.setAttachements(new HashSet<String>());
 		return res;
 	}
 	
@@ -72,4 +75,17 @@ public class MessageService {
 	}
 
 	// Other business methods -------------------------------------------------
+	public Double[] getMessageStatsSent(){
+		return messageRepository.getMessageStatsSent();
+	}
+	public Double[] getMessageStatsReceived(){
+		return messageRepository.getMessageStatsReceived();
+	}
+	public Actor getActorMoreSent(){
+		return messageRepository.getActorMoreSent();
+	}
+	public Actor getActorMoreReceived(){
+		return messageRepository.getActorMoreReceived();
+	}
+	
 }

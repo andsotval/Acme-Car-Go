@@ -1,15 +1,20 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Application;
+import domain.Comment;
 import domain.Customer;
-
+import domain.Message;
+import domain.OfferOrRequest;
 import repositories.CustomerRepository;
+import security.UserAccountService;
 
 @Service
 @Transactional
@@ -18,6 +23,8 @@ public class CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private UserAccountService userAccountService;
 
 	// Supporting services ----------------------------------------------------
 
@@ -30,6 +37,13 @@ public class CustomerService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Customer create(){
 		Customer res= new Customer();
+		res.setComments(new HashSet<Comment>());
+		res.setReceivers(new HashSet<Message>());
+		res.setSenders(new HashSet<Message>());
+		res.setApplications(new HashSet<Application>());
+		res.setOffers(new HashSet<OfferOrRequest>());
+		
+		res.setUserAccount(userAccountService.create("ADMIN"));
 		return res;
 	}
 	
@@ -72,4 +86,11 @@ public class CustomerService {
 	}
 
 	// Other business methods -------------------------------------------------
+	
+	public Customer getCustomerMoreApplicationsAccepted(){
+		return customerRepository.getCustomerMoreApplicationsAccepted();
+	}
+	public Customer getCustomerMoreApplicationsDenied(){
+		return customerRepository.getCustomerMoreApplicationsDenied();
+	}
 }

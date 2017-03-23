@@ -1,12 +1,15 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Application;
+import domain.Comment;
 import domain.OfferOrRequest;
 
 import repositories.OfferOrRequestRepository;
@@ -30,6 +33,8 @@ public class OfferOrRequestService {
 	// Simple CRUD methods ----------------------------------------------------
 	public OfferOrRequest create(){
 		OfferOrRequest res= new OfferOrRequest();
+		res.setApplications(new HashSet<Application>());
+		res.setComments(new HashSet<Comment>());
 		return res;
 	}
 	
@@ -72,4 +77,13 @@ public class OfferOrRequestService {
 	}
 
 	// Other business methods -------------------------------------------------
+	public Double getRatio(){
+		return offerOrRequestRepository.getRatio();
+	}
+	public Double getAveragePerCustomer(){
+		return offerOrRequestRepository.getAveragePerCustomer();
+	}
+	public Double getAverageApplicationsPerOfferOrRequest(){
+		return offerOrRequestRepository.getAverageApplicationsPerOfferOrRequest();
+	}
 }

@@ -67,4 +67,14 @@ public class ActorService {
 	}
 
 	// Other business methods -------------------------------------------------
+	
+	public Double getActorsAverageCommentsAll(){
+		return actorRepository.getActorsAverageCommentsAll();
+	}
+	public Double getActorsAverageComments(){
+		return actorRepository.getActorsAverageComments();
+	}
+	public Collection<Actor> getActorsMoreCommentsByAverage(){
+		return actorRepository.getActorsMoreCommentsByAverage();
+	}
 }
