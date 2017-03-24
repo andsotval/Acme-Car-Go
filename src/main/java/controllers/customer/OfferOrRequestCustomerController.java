@@ -13,7 +13,7 @@ import domain.OfferOrRequest;
 import services.OfferOrRequestService;
 
 @Controller
-@RequestMapping("/customer/offerOrRequest")
+@RequestMapping("/offerOrRequest/customer")
 public class OfferOrRequestCustomerController extends AbstractController {
 	// Constructors -----------------------------------------------------------
 

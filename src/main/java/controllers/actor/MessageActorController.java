@@ -14,7 +14,7 @@ import services.ActorService;
 import services.ApplicationService;
 import services.CustomerService;
 @Controller
-@RequestMapping("/actor/message")
+@RequestMapping("/message/actor")
 public class MessageActorController extends AbstractController {
 	// Constructors -----------------------------------------------------------
 

@@ -14,7 +14,7 @@ import services.ApplicationService;
 import services.CustomerService;
 
 @Controller
-@RequestMapping("/customer/application")
+@RequestMapping("/application/customer")
 public class ApplicationCustomerController extends AbstractController {
 	// Constructors -----------------------------------------------------------
 

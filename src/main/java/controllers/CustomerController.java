@@ -10,9 +10,20 @@
 
 package controllers;
 
+import java.util.Collection;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import domain.Customer;
+import security.Authority;
+import services.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
@@ -23,26 +34,40 @@ public class CustomerController extends AbstractController {
 	public CustomerController() {
 		super();
 	}
+	//Services
+	@Autowired
+	CustomerService customerService;
+	// Creation ----------------------------------------------------------------
 
-	// Action-1 ---------------------------------------------------------------		
-
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register() {
 		ModelAndView result;
-
-		result = new ModelAndView("customer/action-1");
-
+        Customer customer=customerService.create();
+		result=new ModelAndView("customer/edit");
+		result.addObject("customer",customer);
 		return result;
+
 	}
-	
-	// Action-2 ---------------------------------------------------------------		
+	// Register ----------------------------------------------------------------
+		@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+		public ModelAndView save(@Valid Customer customer, BindingResult binding) {
+			ModelAndView result;
+			if(binding.hasErrors()){
+				System.out.println(binding);
+				result=new ModelAndView("customer/edit");
+				result.addObject("customer",customer);
+			}
+			else{
+				try{
+					customerService.save(customer);
+					result = new ModelAndView("redirect:/");
+				}catch(Throwable oops){
+					result=new ModelAndView("customer/edit");
+					result.addObject("customer",customer);
+					result.addObject("message","customer.commit.error");
+				}
+			}
+			return result;
+		}
 
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
-		ModelAndView result;
-
-		result = new ModelAndView("customer/action-2");
-
-		return result;
-	}
 }

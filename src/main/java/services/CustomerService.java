@@ -44,7 +44,7 @@ public class CustomerService {
 		res.setApplications(new HashSet<Application>());
 		res.setOffers(new HashSet<OfferOrRequest>());
 		
-		res.setUserAccount(userAccountService.create("ADMIN"));
+		res.setUserAccount(userAccountService.create("CUSTOMER"));
 		return res;
 	}
 	
