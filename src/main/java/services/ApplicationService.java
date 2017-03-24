@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Application;
-
+import domain.EnumApplication;
 import repositories.ApplicationRepository;
 
 @Service
@@ -20,7 +20,8 @@ public class ApplicationService {
 	private ApplicationRepository applicationRepository;
 
 	// Supporting services ----------------------------------------------------
-
+	@Autowired
+	private CustomerService customerService;
 	// Constructors -----------------------------------------------------------
 
 	public ApplicationService() {
@@ -30,6 +31,8 @@ public class ApplicationService {
 	// Simple CRUD methods ----------------------------------------------------
 	public Application create(){
 		Application res= new Application();
+		res.setApplication(EnumApplication.PENDING);
+		res.setCustomer(customerService.findByPrincipal());
 		return res;
 	}
 	
@@ -72,4 +75,16 @@ public class ApplicationService {
 	}
 
 	// Other business methods -------------------------------------------------
+	public void acceptApplication(int applicationId){
+		Assert.notNull(applicationId);
+		Application a=findOne(applicationId);
+		Assert.notNull(a);
+		a.setApplication(EnumApplication.ACCEPTED);
+	}
+	public void deniedApplication(int applicationId){
+		Assert.notNull(applicationId);
+		Application a=findOne(applicationId);
+		Assert.notNull(a);
+		a.setApplication(EnumApplication.DENIED);
+	}
 }

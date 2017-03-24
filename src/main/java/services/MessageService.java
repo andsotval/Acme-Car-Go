@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class MessageService {
 	public Message create(){
 		Message res= new Message();
 		res.setAttachements(new HashSet<String>());
+		res.setMoment(new Date());
 		return res;
 	}
 	

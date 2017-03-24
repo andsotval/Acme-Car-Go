@@ -45,4 +45,26 @@ public class OfferOrRequestCustomerController extends AbstractController {
 		return result;
 	}
 
+	// Apply ---------------------------------------------------------------
+	@RequestMapping("/apply")
+	public ModelAndView apply(@RequestParam int offerOrRequestId) {
+		ModelAndView result;
+		offerOrRequestService.applyOfferOrRequest(offerOrRequestId);
+		Collection<OfferOrRequest> offersAndRequests = offerOrRequestService.getSearch("");
+		result = new ModelAndView("offerOrRequest/list");
+		result.addObject("offerOrRequests", offersAndRequests);
+		return result;
+	}
+
+	// Ban ---------------------------------------------------------------
+	@RequestMapping("/ban")
+	public ModelAndView ban(@RequestParam int offerOrRequestId) {
+		ModelAndView result;
+		offerOrRequestService.banOfferOrRequest(offerOrRequestId);
+		Collection<OfferOrRequest> offersAndRequests = offerOrRequestService.getSearch("");
+		result = new ModelAndView("offerOrRequest/list");
+		result.addObject("offerOrRequests", offersAndRequests);
+		return result;
+	}
+
 }

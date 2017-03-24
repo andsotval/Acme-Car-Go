@@ -38,4 +38,26 @@ public class ApplicationCustomerController extends AbstractController {
 		return result;
 	}
 
+	// Accepted ---------------------------------------------------------------
+	@RequestMapping("/accepted")
+	public ModelAndView accepted(@RequestParam int applicationId) {
+		ModelAndView result;
+		applicationService.acceptApplication(applicationId);
+		Collection<Application> applications = customerService.findByPrincipal().getApplications();
+		result = new ModelAndView("application/list");
+		result.addObject("applications", applications);
+		return result;
+	}
+
+	// Denied ---------------------------------------------------------------
+	@RequestMapping("/denied")
+	public ModelAndView denied(@RequestParam int applicationId) {
+		ModelAndView result;
+		applicationService.deniedApplication(applicationId);
+		Collection<Application> applications = customerService.findByPrincipal().getApplications();
+		result = new ModelAndView("application/list");
+		result.addObject("applications", applications);
+		return result;
+	}
+
 }

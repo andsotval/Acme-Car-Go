@@ -23,7 +23,8 @@ public class OfferOrRequestService {
 	private OfferOrRequestRepository offerOrRequestRepository;
 
 	// Supporting services ----------------------------------------------------
-
+	@Autowired
+	private ApplicationService applicationService;
 	// Constructors -----------------------------------------------------------
 
 	public OfferOrRequestService() {
@@ -88,5 +89,19 @@ public class OfferOrRequestService {
 	}
 	public Collection<OfferOrRequest> getSearch(String text){
 		return offerOrRequestRepository.getSearch(text);
+	}
+	public void applyOfferOrRequest(int offerOrRequestId){
+		Assert.notNull(offerOrRequestId);
+		OfferOrRequest o=findOne(offerOrRequestId);
+		Assert.notNull(o);
+		Application a=applicationService.create();
+		o.getApplications().add(a);
+		a.setRequest(o);
+	}
+	public void banOfferOrRequest(int offerOrRequestId){
+		Assert.notNull(offerOrRequestId);
+		OfferOrRequest o=findOne(offerOrRequestId);
+		Assert.notNull(o);
+		o.setIsBan(true);
 	}
 }
