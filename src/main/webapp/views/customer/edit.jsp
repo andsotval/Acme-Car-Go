@@ -12,13 +12,15 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="userAccount" />
+	<form:hidden path="userAccount.authorities" />
 	<form:hidden path="receivers" />
 	<form:hidden path="senders" />
 	<form:hidden path="offers" />
 	<form:hidden path="applications" />
 	<form:hidden path="comments" />
 	
+	<acme:textbox code="customer.username" path="userAccount.username"/>
+	<acme:password code="customer.password" path="userAccount.password"/>		
 	<acme:textbox code="customer.fullName" path="fullName"/>	
 	<acme:textbox code="customer.email" path="email"/>	
 	<acme:textbox code="customer.phone" path="phone"/>

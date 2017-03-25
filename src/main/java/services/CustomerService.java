@@ -70,7 +70,9 @@ public class CustomerService {
 	
 	public Customer save(Customer customer) {
 		Assert.notNull(customer);
-		
+		if(customer.getId()==0){
+			userAccountService.encode(customer.getUserAccount());
+		}
 		Customer result;
 
 		result = customerRepository.save(customer);

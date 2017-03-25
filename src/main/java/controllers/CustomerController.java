@@ -11,6 +11,8 @@
 package controllers;
 
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Customer;
+import security.Authority;
 import services.CustomerService;
 
 @Controller
@@ -43,6 +46,9 @@ public class CustomerController extends AbstractController {
         Customer customer=customerService.create();
 		result=new ModelAndView("customer/edit");
 		result.addObject("customer",customer);
+		Collection<Authority> authorities;
+		authorities = Authority.listAuthorities();
+		result.addObject("authorities", authorities);
 		return result;
 
 	}
@@ -54,6 +60,9 @@ public class CustomerController extends AbstractController {
 				System.out.println(binding);
 				result=new ModelAndView("customer/edit");
 				result.addObject("customer",customer);
+				Collection<Authority> authorities;
+				authorities = Authority.listAuthorities();
+				result.addObject("authorities", authorities);
 			}
 			else{
 				try{
@@ -63,6 +72,9 @@ public class CustomerController extends AbstractController {
 					result=new ModelAndView("customer/edit");
 					result.addObject("customer",customer);
 					result.addObject("message","customer.commit.error");
+					Collection<Authority> authorities;
+					authorities = Authority.listAuthorities();
+					result.addObject("authorities", authorities);
 				}
 			}
 			return result;

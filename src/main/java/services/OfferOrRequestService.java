@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import domain.Application;
 import domain.Comment;
+import domain.Customer;
 import domain.OfferOrRequest;
 
 import repositories.OfferOrRequestRepository;
@@ -25,6 +26,8 @@ public class OfferOrRequestService {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private ApplicationService applicationService;
+	@Autowired
+	private CustomerService customerService;
 	// Constructors -----------------------------------------------------------
 
 	public OfferOrRequestService() {
@@ -36,6 +39,9 @@ public class OfferOrRequestService {
 		OfferOrRequest res= new OfferOrRequest();
 		res.setApplications(new HashSet<Application>());
 		res.setComments(new HashSet<Comment>());
+		Customer c=customerService.findByPrincipal();
+		Assert.notNull(c);
+		res.setOffer(c);
 		return res;
 	}
 	
