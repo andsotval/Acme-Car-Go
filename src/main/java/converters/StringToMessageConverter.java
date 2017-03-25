@@ -8,19 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import repositories.MessageRepository;
-import domain.Message;
+import domain.MessageActor;
 
 @Component
 @Transactional
-public class StringToMessageConverter implements Converter<String, Message> {
+public class StringToMessageConverter implements Converter<String, MessageActor> {
 
 	@Autowired
 	MessageRepository	messageRepository;
 
 
 	@Override
-	public Message convert(String text) {
-		Message result;
+	public MessageActor convert(String text) {
+		MessageActor result;
 		int id;
 
 		try {

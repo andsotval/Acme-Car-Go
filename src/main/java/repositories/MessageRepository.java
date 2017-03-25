@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Actor;
-import domain.Message;
+import domain.MessageActor;
 
 @Repository
-public interface MessageRepository extends JpaRepository<Message,Integer> {
+public interface MessageRepository extends JpaRepository<MessageActor,Integer> {
 	//The minimum, the average, and the maximum number of messages sent per actor.
 	@Query("select min(a.senders.size),avg(a.senders.size),max(a.senders.size) from Actor a")
 	public Double[] getMessageStatsSent();

@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Message;
+import domain.MessageActor;
 
 @Component
 @Transactional
-public class MessageToStringConverter implements Converter<Message, String> {
+public class MessageToStringConverter implements Converter<MessageActor, String> {
 
 	@Override
-	public String convert(Message message) {
+	public String convert(MessageActor messageActor) {
 		String result;
 
-		if (message == null)
+		if (messageActor == null)
 			result = null;
 		else
-			result = String.valueOf(message.getId());
+			result = String.valueOf(messageActor.getId());
 
 		return result;
 	}

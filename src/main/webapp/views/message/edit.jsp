@@ -6,13 +6,14 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="customer/message/edit.do" modelAttribute="message">
+<form:form action="message/actor/register.do" modelAttribute="messageActor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="attachements" />
 	<form:hidden path="receiver"/>
 	<form:hidden path="sender"/>
+	<form:hidden path="moment"/>
 
 	<form:label path="title">
 		<spring:message code="message.title" />:
@@ -28,12 +29,6 @@
 	<form:errors cssClass="error" path="text" />
 	<br />
 	
-	<form:label path="moment">
-		<spring:message code="message.moment" />:
-	</form:label>
-	<form:input path="moment" />
-	<form:errors cssClass="error" path="moment" />
-	<br />
 	
 	<input type="submit" name="save"
 		value="<spring:message code="message.save" />" />&nbsp; 
