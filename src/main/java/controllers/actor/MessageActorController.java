@@ -63,7 +63,7 @@ public class MessageActorController extends AbstractController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView register(@RequestParam int actorId) {
 		ModelAndView result;
-		MessageActor messageActor = messageService.create();
+		MessageActor messageActor = messageService.create(actorId);
 		result = new ModelAndView("message/edit");
 		result.addObject("messageActor", messageActor);
 		return result;
@@ -88,6 +88,21 @@ public class MessageActorController extends AbstractController {
 				result.addObject("message", "comment.commit.error");
 			}
 		}
+		return result;
+	}
+	
+	//Delete ------------------------------------------------------------------------------
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam int messageActorId) {
+		ModelAndView result;
+		try {		
+			MessageActor m=messageService.findOne(messageActorId);
+			messageService.delete(m);
+			result = new ModelAndView("redirect:list.do");						
+		} catch (Throwable oops) {
+			result =  new ModelAndView("redirect:/list.do");
+		}
+
 		return result;
 	}
 

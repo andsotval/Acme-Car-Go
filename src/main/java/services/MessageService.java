@@ -23,7 +23,8 @@ public class MessageService {
 	private MessageRepository messageRepository;
 
 	// Supporting services ----------------------------------------------------
-
+	@Autowired
+	private ActorService actorService;
 	// Constructors -----------------------------------------------------------
 
 	public MessageService() {
@@ -31,11 +32,16 @@ public class MessageService {
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public MessageActor create(){
+	public MessageActor create(int actorId){
 		MessageActor res= new MessageActor();
 		res.setAttachements(new HashSet<String>());
 		res.setMoment(new Date());
+		Actor sender=actorService.findByPrincipal();
+		Actor receiver=actorService.findOne(actorId);
+		res.setReceiver(receiver);
+		res.setSender(sender);
 		return res;
+
 	}
 	
 	public Collection<MessageActor> findAll() {
