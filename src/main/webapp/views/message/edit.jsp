@@ -6,6 +6,8 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
 <form:form action="message/actor/register.do" modelAttribute="messageActor">
 
 	<form:hidden path="id" />
@@ -15,26 +17,10 @@
 	<form:hidden path="sender"/>
 	<form:hidden path="moment"/>
 
-	<form:label path="title">
-		<spring:message code="message.title" />:
-	</form:label>
-	<form:input path="title" />
-	<form:errors cssClass="error" path="title" />
-	<br />
+	<acme:textbox code="message.title" path="title"/>	
+	<acme:textbox code="message.text" path="text"/>
 	
-	<form:label path="text">
-		<spring:message code="message.text" />:
-	</form:label>
-	<form:input path="text" />
-	<form:errors cssClass="error" path="text" />
-	<br />
-	
-	
-	<input type="submit" name="save"
-		value="<spring:message code="message.save" />" />&nbsp; 
-	<input type="button" name="cancel"
-		value="<spring:message code="message.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
-	<br />
+	<acme:submit code="message.save" name="save"/>
+	<acme:submit code="message.cancel" name="cancel"/>
 
 </form:form>

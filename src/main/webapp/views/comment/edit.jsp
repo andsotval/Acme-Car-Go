@@ -8,6 +8,8 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
 <form:form action="comment/register.do"
 	modelAttribute="comment">
 
@@ -18,31 +20,11 @@
 	<form:hidden path="actor" />
 	<form:hidden path="offerOrRequest" />
 
-	<form:label path="title">
-		<spring:message code="comment.title" />:
-	</form:label>
-	<form:input path="title" />
-	<form:errors cssClass="error" path="title" />
-	<br />
+	<acme:textbox code="comment.title" path="title"/>		
+	<acme:textbox code="comment.description" path="description"/>
+	<acme:textbox code="comment.stars" path="stars"/>
 
-	<form:label path="description">
-		<spring:message code="comment.description" />:
-	</form:label>
-	<form:input path="description" />
-	<form:errors cssClass="error" path="description" />
-	<br />
-		<form:label path="stars">
-		<spring:message code="comment.stars" />:
-	</form:label>
-	<form:input path="stars" />
-	<form:errors cssClass="error" path="stars" />
-	<br />
-
-	<input type="submit" name="save"
-		value="<spring:message code="comment.save" />" />&nbsp; 
-	<input type="button" name="cancel"
-		value="<spring:message code="comment.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
-	<br />
+	<acme:submit code="comment.save" name="save"/>
+	<acme:submit code="comment.cancel" name="cancel"/>
 
 </form:form>

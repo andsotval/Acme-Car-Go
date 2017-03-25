@@ -6,23 +6,17 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
 <form:form action="banner/administrator/register.do" modelAttribute="banner">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<form:label path="url">
-		<spring:message code="banner.url" />:
-	</form:label>
-	<form:input path="url" />
-	<form:errors cssClass="error" path="url" />
-	<br />
+	<acme:textbox code="banner.url" path="url"/>
 	
-	<input type="submit" name="save"
-		value="<spring:message code="banner.save" />" />&nbsp; 
-	<input type="button" name="cancel"
-		value="<spring:message code="banner.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
-	<br />
+	<acme:submit code="banner.save" name="save"/>
+	<acme:submit code="banner.cancel" name="cancel"/>
+
 
 </form:form>
