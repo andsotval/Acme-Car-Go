@@ -28,7 +28,7 @@
 <!-- Listing OfferOrRequest -->
 
 <display:table pagesize="10" class="displaytag" name="offerOrRequests"
-	requestURI="${requestURI}" id="row">
+	requestURI="${requestURI}" id="offerOrRequest">
 
 	<!-- Attributes -->
 
@@ -55,5 +55,28 @@
 
 	<spring:message code="offerOrRequest.comments" var="ccomments" />
 	<display:column property="comments" title="${ccomments}" />
+	
+	<security:authorize access="hasRole('CUSTOMER')">
+	<display:column>
+		<a href="offerOrRequest/customer/apply.do?offerOrRequestId=${offerOrRequest.id}">
+			<spring:message code="offerOrRequest.apply" />
+		</a>
+	</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<display:column>
+		<a href="offerOrRequest/customer/ban.do?offerOrRequestId=${offerOrRequest.id}">
+			<spring:message code="offerOrRequest.ban" />
+		</a>
+	</display:column>
+	</security:authorize>
+	<security:authorize access="isAuthenticated()">
+	<display:column>
+		<a href="comment/registerByOfferOrRequest.do?offerOrRequestId=${offerOrRequest.id}">
+			<spring:message code="offerOrRequest.comment" />
+		</a>
+	</display:column>
+	</security:authorize>	
 
 </display:table>

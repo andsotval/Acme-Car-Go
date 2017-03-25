@@ -6,7 +6,6 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -26,7 +25,6 @@ public abstract class Actor extends DomainEntity {
 	private String fullName;
 	private String email;
 	private String phone;
-	private Collection<Comment> comments;
 
 	// Constructor
 	public Actor() {
@@ -60,20 +58,13 @@ public abstract class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
-	@ElementCollection
-	@Valid
-	public Collection<Comment> getComments() {
-		return comments;
-	}
 
-	public void setComments(Collection<Comment> comments) {
-		this.comments = comments;
-	}
 
 	// Relationships
 	private Collection<Message> senders;
 	private Collection<Message> receivers;
 	private UserAccount userAccount;
+	private Collection<Comment> comments;
 
 	@NotNull
 	@Valid
@@ -106,5 +97,15 @@ public abstract class Actor extends DomainEntity {
 
 	public void setUserAccount(UserAccount userAccount) {
 		this.userAccount = userAccount;
+	}
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy = "actor")
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
 	}
 }

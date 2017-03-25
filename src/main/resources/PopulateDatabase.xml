@@ -293,5 +293,17 @@
 	<property name="customer" ref="customer3"/>
 	<property name="request" ref="offerOrRequest1"/>
 </bean>
-
+<!-- Coordinates -->
+<bean class="domain.Coordinates" id="coordinates1">
+	<property name="longitude" value="10.20"/>
+	<property name="latitude" value="18.20"/>
+</bean>
+<bean class="domain.Coordinates" id="coordinates2">
+	<property name="longitude" value="21.20"/>
+	<property name="latitude" value="13.20"/>
+</bean>
+<bean class="domain.Coordinates" id="coordinates3">
+	<property name="longitude" value="15.20"/>
+	<property name="latitude" value="3.20"/>
+</bean>
 </beans>

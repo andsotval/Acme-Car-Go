@@ -5,10 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -28,7 +29,6 @@ public class OfferOrRequest extends DomainEntity {
 	//private Coordinates originCoor;
 	private String sourcePlace;
 	//private Coordinates sourceCoor;
-	private Collection<Comment> comments;
 	private boolean isOffer;
 	private boolean isBan;
 
@@ -98,15 +98,6 @@ public class OfferOrRequest extends DomainEntity {
 	public void setSourceCoor(Coordinates sourceCoor) {
 		this.sourceCoor = sourceCoor;
 	}*/
-	@ElementCollection
-	@Valid
-	public Collection<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(Collection<Comment> comments) {
-		this.comments = comments;
-	}
 
 	public boolean getIsOffer() {
 		return isOffer;
@@ -126,6 +117,9 @@ public class OfferOrRequest extends DomainEntity {
 	//Relationship
 	private Customer offer;
 	private Collection<Application> applications;
+	private Collection<Comment> comments;
+	private Coordinates originCoordinate;
+	private Coordinates sourceCoordinate;
 	@NotNull
 	@Valid
 	@ManyToOne(optional=false)
@@ -145,5 +139,34 @@ public class OfferOrRequest extends DomainEntity {
 
 	public void setApplications(Collection<Application> applications) {
 		this.applications = applications;
+	}
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="offerOrRequest")
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
+	}
+	
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = true)
+	public Coordinates getOriginCoordinate() {
+		return originCoordinate;
+	}
+
+	public void setOriginCoordinate(Coordinates originCoordinate) {
+		this.originCoordinate = originCoordinate;
+	}
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = true)
+	public Coordinates getSourceCoordinate() {
+		return sourceCoordinate;
+	}
+
+	public void setSourceCoordinate(Coordinates sourceCoordinate) {
+		this.sourceCoordinate = sourceCoordinate;
 	}
 }

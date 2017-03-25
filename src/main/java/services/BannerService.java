@@ -72,4 +72,8 @@ public class BannerService {
 	}
 
 	// Other business methods -------------------------------------------------
+	
+	public Banner getOnlyBanner(){
+		return findAll().iterator().next();
+	}
 }

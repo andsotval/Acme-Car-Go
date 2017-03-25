@@ -2,12 +2,12 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-@Embeddable
+@Entity
 @Access(AccessType.PROPERTY)
-public class Coordinates {
+public class Coordinates extends DomainEntity {
 
 	// Attributes
 	private double longitude;

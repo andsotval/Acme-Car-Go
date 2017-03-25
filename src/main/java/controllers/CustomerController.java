@@ -10,7 +10,6 @@
 
 package controllers;
 
-import java.util.Collection;
 
 import javax.validation.Valid;
 
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Customer;
-import security.Authority;
 import services.CustomerService;
 
 @Controller

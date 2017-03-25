@@ -97,6 +97,7 @@ public class OfferOrRequestService {
 		Application a=applicationService.create();
 		o.getApplications().add(a);
 		a.setRequest(o);
+		applicationService.save(a);
 	}
 	public void banOfferOrRequest(int offerOrRequestId){
 		Assert.notNull(offerOrRequestId);

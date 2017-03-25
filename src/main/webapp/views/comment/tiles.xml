@@ -10,9 +10,14 @@
 
 <tiles-definitions>
 
-	<definition name="offerOrRequest/list" extends="master.page">
-		<put-attribute name="title" value="List OfferOrRequest" />
-		<put-attribute name="body" value="/views/offerOrRequest/list.jsp" />
+	<definition name="comment/edit" extends="master.page">
+		<put-attribute name="title" value="Edit Comment" />
+		<put-attribute name="body" value="/views/comment/edit.jsp" />
+	</definition>
+	
+		<definition name="comment/list" extends="master.page">
+		<put-attribute name="title" value="List Comment" />
+		<put-attribute name="body" value="/views/comment/list.jsp" />
 	</definition>
 
 </tiles-definitions>

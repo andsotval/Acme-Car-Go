@@ -53,9 +53,18 @@
 		
 		
 		<security:intercept-url pattern="/application/**" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/offerOrRequest/**" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/message/**" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/customer/**" access="isAnonymous()" />   
+		<security:intercept-url pattern="/offerOrRequest/customer/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/offerOrRequest/customer/search.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/offerOrRequest/customer/apply.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/offerOrRequest/customer/register.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/offerOrRequest/customer/ban.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/message/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/registerByActor.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/comment/registerByOfferOrRequest.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/comment/register.do" access="isAuthenticated()" />    
+		<security:intercept-url pattern="/customer/**" access="isAnonymous()" />
+		<security:intercept-url pattern="/banner/**" access="hasRole('ADMIN')" />   
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
