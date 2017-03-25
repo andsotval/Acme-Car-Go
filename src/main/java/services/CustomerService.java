@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 import domain.Application;
 import domain.Comment;
 import domain.Customer;
-import domain.Message;
+import domain.MessageActor;
 import domain.OfferOrRequest;
 import repositories.CustomerRepository;
 import security.LoginService;
@@ -39,8 +39,8 @@ public class CustomerService {
 	public Customer create(){
 		Customer res= new Customer();
 		res.setComments(new HashSet<Comment>());
-		res.setReceivers(new HashSet<Message>());
-		res.setSenders(new HashSet<Message>());
+		res.setReceivers(new HashSet<MessageActor>());
+		res.setSenders(new HashSet<MessageActor>());
 		res.setApplications(new HashSet<Application>());
 		res.setOffers(new HashSet<OfferOrRequest>());
 		

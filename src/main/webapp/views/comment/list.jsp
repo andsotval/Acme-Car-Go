@@ -28,6 +28,12 @@
 	
 	<spring:message code="comment.stars" var="cstars" />
 	<display:column property="stars" title="${cstars}"/>
-
+	<security:authorize access="hasRole('ADMIN')">
+	<display:column>
+		<a href="comment/ban.do?commentId=${comment.id}">
+			<spring:message code="comment.ban" />
+		</a>
+	</display:column>
+	</security:authorize>
 		
 </display:table>

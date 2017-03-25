@@ -61,30 +61,30 @@ public abstract class Actor extends DomainEntity {
 
 
 	// Relationships
-	private Collection<Message> senders;
-	private Collection<Message> receivers;
+	private Collection<MessageActor> senders;
+	private Collection<MessageActor> receivers;
 	private UserAccount userAccount;
 	private Collection<Comment> comments;
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "sender")
-	public Collection<Message> getSenders() {
+	public Collection<MessageActor> getSenders() {
 		return senders;
 	}
 
-	public void setSenders(Collection<Message> senders) {
+	public void setSenders(Collection<MessageActor> senders) {
 		this.senders = senders;
 	}
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "receiver")
-	public Collection<Message> getReceivers() {
+	public Collection<MessageActor> getReceivers() {
 		return receivers;
 	}
 
-	public void setReceivers(Collection<Message> receivers) {
+	public void setReceivers(Collection<MessageActor> receivers) {
 		this.receivers = receivers;
 	}
 

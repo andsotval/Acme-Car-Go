@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Actor;
-import domain.Message;
+import domain.MessageActor;
 
 import repositories.MessageRepository;
 
@@ -23,7 +23,8 @@ public class MessageService {
 	private MessageRepository messageRepository;
 
 	// Supporting services ----------------------------------------------------
-
+	@Autowired
+	private ActorService actorService;
 	// Constructors -----------------------------------------------------------
 
 	public MessageService() {
@@ -31,15 +32,20 @@ public class MessageService {
 	}
 
 	// Simple CRUD methods ----------------------------------------------------
-	public Message create(){
-		Message res= new Message();
+	public MessageActor create(int actorId){
+		MessageActor res= new MessageActor();
 		res.setAttachements(new HashSet<String>());
 		res.setMoment(new Date());
+		Actor sender=actorService.findByPrincipal();
+		Actor receiver=actorService.findOne(actorId);
+		res.setReceiver(receiver);
+		res.setSender(sender);
 		return res;
+
 	}
 	
-	public Collection<Message> findAll() {
-		Collection<Message> result;
+	public Collection<MessageActor> findAll() {
+		Collection<MessageActor> result;
 		
 		result = messageRepository.findAll();
 		Assert.notNull(result);
@@ -47,10 +53,10 @@ public class MessageService {
 		return result;
 	}
 
-	public Message findOne(int messageId) {
+	public MessageActor findOne(int messageId) {
 		Assert.isTrue(messageId != 0);
 		
-		Message result;
+		MessageActor result;
 
 		result = messageRepository.findOne(messageId);
 		Assert.notNull(result);
@@ -58,22 +64,22 @@ public class MessageService {
 		return result;
 	}
 	
-	public Message save(Message message) {
-		Assert.notNull(message);
+	public MessageActor save(MessageActor messageActor) {
+		Assert.notNull(messageActor);
 		
-		Message result;
+		MessageActor result;
 
-		result = messageRepository.save(message);
+		result = messageRepository.save(messageActor);
 		
 		return result;
 	}	
 	
-	public void delete(Message message) {
-		Assert.notNull(message);
-		Assert.isTrue(message.getId() != 0);
-		Assert.isTrue(messageRepository.exists(message.getId()));		
+	public void delete(MessageActor messageActor) {
+		Assert.notNull(messageActor);
+		Assert.isTrue(messageActor.getId() != 0);
+		Assert.isTrue(messageRepository.exists(messageActor.getId()));		
 		
-		messageRepository.delete(message);
+		messageRepository.delete(messageActor);
 	}
 
 	// Other business methods -------------------------------------------------

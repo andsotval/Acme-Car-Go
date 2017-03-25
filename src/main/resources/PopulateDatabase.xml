@@ -96,12 +96,12 @@
 		</property>
 		<property name="senders">
 			<list>
-			<ref bean="message3"/>
+			<ref bean="messageActor3"/>
 			</list>
 		</property>
 		<property name="receivers">
 			<list>
-			<ref bean="message1"/>
+			<ref bean="messageActor1"/>
 			</list>
 		</property>
 		<property name="offers">
@@ -127,12 +127,12 @@
 		</property>
 		<property name="senders">
 			<list>
-			<ref bean="message1"/>
+			<ref bean="messageActor1"/>
 			</list>
 		</property>
 		<property name="receivers">
 			<list>
-			<ref bean="message2"/>
+			<ref bean="messageActor2"/>
 			</list>
 		</property>
 		<property name="offers">
@@ -158,12 +158,12 @@
 		</property>
 		<property name="senders">
 			<list>
-			<ref bean="message2"/>
+			<ref bean="messageActor2"/>
 			</list>
 		</property>
 		<property name="receivers">
 			<list>
-			<ref bean="message3"/>
+			<ref bean="messageActor3"/>
 			</list>
 		</property>
 		<property name="offers">
@@ -198,11 +198,11 @@
 <property name="stars" value="3"/>
 <property name="isBan" value="true"/>
 </bean>
-<!-- Message -->
-<bean class="domain.Message" id="message1">
+<!-- MessageActor -->
+<bean class="domain.MessageActor" id="messageActor1">
 	<property name="title" value="Title1"/>
 	<property name="moment" value="13/03/2016 15:00"/>
-	<property name="text" value="Text Message1"/>
+	<property name="text" value="Text MessageActor1"/>
 	<property name="attachements">
 	<list>
 	</list>
@@ -210,10 +210,10 @@
 	<property name="receiver" ref="customer1"/>
 	<property name="sender" ref="customer2"/>
 </bean>
-<bean class="domain.Message" id="message2">
+<bean class="domain.MessageActor" id="messageActor2">
 	<property name="title" value="Title2"/>
 	<property name="moment" value="13/02/2016 15:00"/>
-	<property name="text" value="Text Message2"/>
+	<property name="text" value="Text MessageActor2"/>
 	<property name="attachements">
 	<list>
 	</list>
@@ -221,10 +221,10 @@
 	<property name="receiver" ref="customer2"/>
 	<property name="sender" ref="customer3"/>
 </bean>
-<bean class="domain.Message" id="message3">
+<bean class="domain.MessageActor" id="messageActor3">
 	<property name="title" value="Title2"/>
 	<property name="moment" value="13/02/2016 15:00"/>
-	<property name="text" value="Text Message3"/>
+	<property name="text" value="Text MessageActor3"/>
 	<property name="attachements">
 	<list>
 	</list>

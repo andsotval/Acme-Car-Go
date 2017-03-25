@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 
 import domain.Administrator;
 import domain.Comment;
-import domain.Message;
+import domain.MessageActor;
 import repositories.AdministratorRepository;
 import security.UserAccountService;
 
@@ -36,8 +36,8 @@ public class AdministratorService {
 	public Administrator create(){
 		Administrator res= new Administrator();
 		res.setComments(new HashSet<Comment>());
-		res.setReceivers(new HashSet<Message>());
-		res.setSenders(new HashSet<Message>());
+		res.setReceivers(new HashSet<MessageActor>());
+		res.setSenders(new HashSet<MessageActor>());
 		
 		res.setUserAccount(userAccountService.create("ADMIN"));
 		return res;
