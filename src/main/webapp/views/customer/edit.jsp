@@ -6,6 +6,8 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+
 <form:form action="customer/register.do" modelAttribute="customer">
 
 	<form:hidden path="id" />
@@ -16,33 +18,12 @@
 	<form:hidden path="offers" />
 	<form:hidden path="applications" />
 	<form:hidden path="comments" />
-
-	<form:label path="fullName">
-		<spring:message code="customer.fullName" />:
-	</form:label>
-	<form:input path="fullName" />
-	<form:errors cssClass="error" path="fullName" />
-	<br />
 	
-	<form:label path="email">
-		<spring:message code="customer.email" />:
-	</form:label>
-	<form:input path="email" />
-	<form:errors cssClass="error" path="email" />
-	<br />
+	<acme:textbox code="customer.fullName" path="fullName"/>	
+	<acme:textbox code="customer.email" path="email"/>	
+	<acme:textbox code="customer.phone" path="phone"/>
 	
-	<form:label path="phone">
-		<spring:message code="customer.phone" />:
-	</form:label>
-	<form:input path="phone" />
-	<form:errors cssClass="error" path="phone" />
-	<br />	
-	
-	<input type="submit" name="save"
-		value="<spring:message code="customer.save" />" />&nbsp; 
-	<input type="button" name="cancel"
-		value="<spring:message code="customer.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
-	<br />
+	<acme:submit code="customer.save" name="save"/>
+	<acme:submit code="customer.cancel" name="cancel"/>
 
 </form:form>

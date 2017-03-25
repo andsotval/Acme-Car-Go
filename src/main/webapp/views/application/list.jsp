@@ -10,6 +10,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+
 <!-- Listing Appication -->
 
 <display:table pagesize="10" class="displaytag" name="applications"
