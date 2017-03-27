@@ -209,6 +209,84 @@
 			</list>
 		</property>
 	</bean>
+	<bean class="domain.Customer" id="customer4">
+		<property name="fullName" value="Customer4"/>
+		<property name="email" value="customer4@gmail.com"/>
+		<property name="phone" value="644133156"/>
+		<property name="userAccount" ref="userAccount6"/>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+		<property name="senders">
+			<list>
+			</list>
+		</property>
+		<property name="receivers">
+			<list>
+			</list>
+		</property>
+		<property name="offers">
+			<list>
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.Customer" id="customer5">
+		<property name="fullName" value="Customer5"/>
+		<property name="email" value="customer3@gmail.com"/>
+		<property name="phone" value="666553156"/>
+		<property name="userAccount" ref="userAccount7"/>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+		<property name="senders">
+			<list>
+			</list>
+		</property>
+		<property name="receivers">
+			<list>
+			</list>
+		</property>
+		<property name="offers">
+			<list>
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.Customer" id="customer6">
+		<property name="fullName" value="Customer6"/>
+		<property name="email" value="customer6@gmail.com"/>
+		<property name="phone" value="666663156"/>
+		<property name="userAccount" ref="userAccount8"/>
+		<property name="comments">
+			<list>
+			</list>
+		</property>
+		<property name="senders">
+			<list>
+			</list>
+		</property>
+		<property name="receivers">
+			<list>
+			</list>
+		</property>
+		<property name="offers">
+			<list>
+			</list>
+		</property>
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+	</bean>
 <!-- Comments -->
 <bean class="domain.Comment" id="comment1">
 <property name="title" value="Title1"/>
@@ -265,7 +343,6 @@
 	<property name="receiver" ref="customer3"/>
 	<property name="sender" ref="customer1"/>
 </bean>
-<!-- Coordinates -->
 <!-- Banner -->
 <bean class="domain.Banner" id="banner1">
 	<property name="url" value="http://www.consigna.com/4569878"/>
@@ -307,6 +384,78 @@
 	<property name="applications">
 		<list>
 			<ref bean="application1"/>
+		</list>
+	</property>
+</bean>
+<bean class="domain.OfferOrRequest" id="offerOrRequest3">
+	<property name="title" value="Title3"/>
+	<property name="description" value="Description3"/>
+	<property name="moment" value="30/03/2018 15:00"/>
+	<property name="originPlace" value="OriginPlace3"/>
+	<property name="sourcePlace" value="SourcePlace3"/>
+	<property name="isOffer" value="false"/>
+	<property name="isBan" value="false"/>
+	<property name="comments">
+		<list>
+		</list>
+	</property>
+	<property name="offer" ref="customer3"/>
+	<property name="applications">
+		<list>
+		</list>
+	</property>
+</bean>
+<bean class="domain.OfferOrRequest" id="offerOrRequest4">
+	<property name="title" value="Title4"/>
+	<property name="description" value="Description4"/>
+	<property name="moment" value="13/04/2018 15:00"/>
+	<property name="originPlace" value="OriginPlace4"/>
+	<property name="sourcePlace" value="SourcePlace4"/>
+	<property name="isOffer" value="false"/>
+	<property name="isBan" value="false"/>
+	<property name="comments">
+		<list>
+		</list>
+	</property>
+	<property name="offer" ref="customer2"/>
+	<property name="applications">
+		<list>
+		</list>
+	</property>
+</bean>
+<bean class="domain.OfferOrRequest" id="offerOrRequest5">
+	<property name="title" value="Title5"/>
+	<property name="description" value="Description5"/>
+	<property name="moment" value="13/05/2018 15:00"/>
+	<property name="originPlace" value="OriginPlace5"/>
+	<property name="sourcePlace" value="SourcePlace5"/>
+	<property name="isOffer" value="false"/>
+	<property name="isBan" value="false"/>
+	<property name="comments">
+		<list>
+		</list>
+	</property>
+	<property name="offer" ref="customer5"/>
+	<property name="applications">
+		<list>
+		</list>
+	</property>
+</bean>
+<bean class="domain.OfferOrRequest" id="offerOrRequest6">
+	<property name="title" value="Title6"/>
+	<property name="description" value="Description6"/>
+	<property name="moment" value="13/06/2018 15:00"/>
+	<property name="originPlace" value="OriginPlace6"/>
+	<property name="sourcePlace" value="SourcePlace6"/>
+	<property name="isOffer" value="false"/>
+	<property name="isBan" value="false"/>
+	<property name="comments">
+		<list>
+		</list>
+	</property>
+	<property name="offer" ref="customer4"/>
+	<property name="applications">
+		<list>
 		</list>
 	</property>
 </bean>
