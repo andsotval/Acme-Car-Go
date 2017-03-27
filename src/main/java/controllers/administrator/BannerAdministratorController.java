@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import controllers.AbstractController;
 import domain.Banner;
+import forms.BannerForm;
 import services.BannerService;
 
 @Controller
@@ -40,7 +41,7 @@ public class BannerAdministratorController extends AbstractController {
 
 	// Register ----------------------------------------------------------------
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Banner banner, BindingResult binding) {
+	public ModelAndView save(BannerForm bannerForm, BindingResult binding) {
 		ModelAndView result;
 		if (binding.hasErrors()) {
 			System.out.println(binding);
