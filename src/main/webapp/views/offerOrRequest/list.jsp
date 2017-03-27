@@ -24,7 +24,7 @@
 
 
 </div>
-
+<a href="offerOrRequest/customer/register.do"><spring:message code="offerOrRequest.create" /></a>
 <!-- Listing OfferOrRequest -->
 
 <display:table pagesize="10" class="displaytag" name="offerOrRequests"
@@ -58,7 +58,7 @@
 	
 	<security:authorize access="hasRole('CUSTOMER')">
 	<display:column>
-		<a href="offerOrRequest/customer/apply.do?offerOrRequestId=${offerOrRequest.id}">
+		<a href="offerOrRequest/customer/apply.do?offerOrRequestId=<jstl:out value="${offerOrRequest.id}"/>">
 			<spring:message code="offerOrRequest.apply" />
 		</a>
 	</display:column>
@@ -66,14 +66,14 @@
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
-		<a href="offerOrRequest/customer/ban.do?offerOrRequestId=${offerOrRequest.id}">
+		<a href="offerOrRequest/customer/ban.do?offerOrRequestId=<jstl:out value="${offerOrRequest.id}"/>">
 			<spring:message code="offerOrRequest.ban" />
 		</a>
 	</display:column>
 	</security:authorize>
 	<security:authorize access="isAuthenticated()">
 	<display:column>
-		<a href="comment/registerByOfferOrRequest.do?offerOrRequestId=${offerOrRequest.id}">
+		<a href="comment/registerByOfferOrRequest.do?offerOrRequestId=<jstl:out value="${offerOrRequest.id}"/>">
 			<spring:message code="offerOrRequest.comment" />
 		</a>
 	</display:column>

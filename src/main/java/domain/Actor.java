@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import security.UserAccount;
 
@@ -33,6 +34,7 @@ public abstract class Actor extends DomainEntity {
 
 	// Getters and Setters
 	@NotBlank
+	@SafeHtml
 	public String getFullName() {
 		return fullName;
 	}
@@ -41,6 +43,7 @@ public abstract class Actor extends DomainEntity {
 		this.fullName = fullName;
 	}
 
+	@SafeHtml
 	@Email
 	public String getEmail() {
 		return email;
@@ -49,7 +52,7 @@ public abstract class Actor extends DomainEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	@SafeHtml
 	public String getPhone() {
 		return phone;
 	}

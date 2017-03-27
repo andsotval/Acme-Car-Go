@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -19,6 +20,7 @@ public class Banner extends DomainEntity {
 
 	// Getters and Setters
 	@URL
+	@SafeHtml
 	public String getUrl() {
 		return url;
 	}

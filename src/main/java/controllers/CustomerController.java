@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import domain.Actor;
 import domain.Customer;
+import domain.MessageActor;
 import security.Authority;
 import services.CustomerService;
 
@@ -38,6 +40,17 @@ public class CustomerController extends AbstractController {
 	//Services
 	@Autowired
 	CustomerService customerService;
+	
+	//List --------------------------------------------------------------------
+	@RequestMapping("/list")
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Customer> customers = customerService.findAll();
+		result = new ModelAndView("customer/list");
+		result.addObject("customers", customers);
+		return result;
+	}
+	
 	// Creation ----------------------------------------------------------------
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

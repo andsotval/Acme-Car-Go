@@ -12,26 +12,24 @@
 
 <!-- Listing Appication -->
 
-<display:table pagesize="10" class="displaytag" name="comments"
- requestURI="${requestURI}" id="comment">
+<display:table pagesize="10" class="displaytag" name="customers"
+ requestURI="${requestURI}" id="customer">
 	
 	<!-- Attributes -->
 
-	<spring:message code="comment.title" var="ctitle" />
-	<display:column property="title" title="${ctitle}"/>
+	<spring:message code="customer.fullName" var="cfullName" />
+	<display:column property="fullName" title="${cfullName}"/>
 	
-	<spring:message code="comment.description" var="cdescription" />
-	<display:column property="description" title="${cdescription}"/>
+	<spring:message code="customer.email" var="cemail" />
+	<display:column property="email" title="${cemail}"/>
 	
-	<spring:message code="comment.moment" var="cmoment" />
-	<display:column property="moment" title="${cmoment}"/>
+	<spring:message code="customer.phone" var="cphone" />
+	<display:column property="phone" title="${cphone}"/>
 	
-	<spring:message code="comment.stars" var="cstars" />
-	<display:column property="stars" title="${cstars}"/>
-	<security:authorize access="hasRole('ADMIN')">
+	<security:authorize access="isAuthenticated()">
 	<display:column>
-		<a href="comment/ban.do?commentId=<jstl:out value="${comment.id}"/>">
-			<spring:message code="comment.ban" />
+		<a href="message/actor/register.do?actorId=<jstl:out value="${customer.id}"/>">
+			<spring:message code="customer.message" />
 		</a>
 	</display:column>
 	</security:authorize>

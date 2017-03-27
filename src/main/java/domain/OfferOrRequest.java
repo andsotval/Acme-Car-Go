@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -26,9 +27,7 @@ public class OfferOrRequest extends DomainEntity {
 	private String description;
 	private Date moment;
 	private String originPlace;
-	//private Coordinates originCoor;
 	private String sourcePlace;
-	//private Coordinates sourceCoor;
 	private boolean isOffer;
 	private boolean isBan;
 
@@ -39,6 +38,7 @@ public class OfferOrRequest extends DomainEntity {
 
 	// Getters and Setters
 	@NotBlank
+	@SafeHtml
 	public String getTitle() {
 		return title;
 	}
@@ -47,6 +47,7 @@ public class OfferOrRequest extends DomainEntity {
 		this.title = title;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getDescription() {
 		return description;
 	}
@@ -65,6 +66,7 @@ public class OfferOrRequest extends DomainEntity {
 		this.moment = moment;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getOriginPlace() {
 		return originPlace;
 	}
@@ -72,16 +74,9 @@ public class OfferOrRequest extends DomainEntity {
 	public void setOriginPlace(String originPlace) {
 		this.originPlace = originPlace;
 	}
-	/*@Valid
-	@Column(name="originCoor")
-	public Coordinates getOriginCoor() {
-		return originCoor;
-	}
-
-	public void setOriginCoor(Coordinates originCoor) {
-		this.originCoor = originCoor;
-	}*/
+	
 	@NotBlank
+	@SafeHtml
 	public String getSourcePlace() {
 		return sourcePlace;
 	}
@@ -89,16 +84,7 @@ public class OfferOrRequest extends DomainEntity {
 	public void setSourcePlace(String sourcePlace) {
 		this.sourcePlace = sourcePlace;
 	}
-	/*@Valid
-	@Column(name="sourceCoor")
-	public Coordinates getSourceCoor() {
-		return sourceCoor;
-	}
-
-	public void setSourceCoor(Coordinates sourceCoor) {
-		this.sourceCoor = sourceCoor;
-	}*/
-
+	
 	public boolean getIsOffer() {
 		return isOffer;
 	}
