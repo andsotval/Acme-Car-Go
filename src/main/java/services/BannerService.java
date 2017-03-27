@@ -84,9 +84,10 @@ public class BannerService {
 		return this.findAll().iterator().next();
 	}
 
-	public Banner reconstruct(final BannerForm bannerForm, final BindingResult binding) {
-		final Banner result = this.create();
+	public Banner reconstruct(BannerForm bannerForm, BindingResult binding) {
+		Banner result = this.create();
 		result.setUrl(bannerForm.getUrl());
+		validator.validate(result, binding);
 		return this.save(result);
 	}
 }

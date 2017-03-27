@@ -41,7 +41,7 @@ public class BannerAdministratorController extends AbstractController {
 
 	// Register ----------------------------------------------------------------
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(final BannerForm bannerForm, final BindingResult binding) {
+	public ModelAndView save(BannerForm bannerForm,BindingResult binding) {
 		ModelAndView result;
 		final Banner banner;
 

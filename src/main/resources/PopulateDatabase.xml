@@ -64,6 +64,39 @@
 			</list>
 		</property>
 	</bean>
+	<bean class="security.UserAccount" id="userAccount6">
+		<property value="customer4" name="username" />
+		<property value="55feb130be438e686ad6a80d12dd8f44" name="password" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property value="CUSTOMER" name="authority" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean class="security.UserAccount" id="userAccount7">
+		<property value="customer5" name="username" />
+		<property value="9e8486cdd435beda9a60806dd334d964" name="password" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property value="CUSTOMER" name="authority" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+		<bean class="security.UserAccount" id="userAccount8">
+		<property value="customer6" name="username" />
+		<property value="dbaa8bd25e06cc641f5406027c026e8b" name="password" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property value="CUSTOMER" name="authority" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 <!-- Admin -->
 	<bean class="domain.Administrator" id="admin">
 		<property name="fullName" value="Administrador"/>
