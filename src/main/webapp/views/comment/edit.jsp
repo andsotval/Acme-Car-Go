@@ -25,8 +25,6 @@
 	<acme:textbox code="comment.stars" path="stars"/>
 
 	<acme:submit code="comment.save" name="save"/>
-	<input type="button" name="cancel"
-		value="<spring:message code="customer.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
+	<acme:cancel code="comment.cancel" url="/"/>
 
 </form:form>

@@ -16,9 +16,7 @@
 	<acme:textbox code="banner.url" path="url"/>
 	
 	<acme:submit code="banner.save" name="save"/>
-	<input type="button" name="cancel"
-		value="<spring:message code="customer.cancel" />"
-		onclick="javascript: relativeRedir('/');" />
+	<acme:cancel code="banner.cancel" url="/"/>
 
 
 </form:form>
