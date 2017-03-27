@@ -20,6 +20,12 @@
 		<put-attribute name="title" value="Editar Comment" />
 		<put-attribute name="body" value="/views/comment/edit.jsp" />
 	</definition>
+	
+	<definition name="comment/editOfferOrRequest" extends="master.page">
+		<put-attribute name="title" value="Editar Comment" />
+		<put-attribute name="body" value="/views/comment/editOfferOrRequest.jsp" />
+	</definition>
+	
 		<definition name="comment/list" extends="master.page">
 		<put-attribute name="title" value="List Comment" />
 		<put-attribute name="body" value="/views/comment/list.jsp" />

@@ -25,6 +25,7 @@ public class BannerService {
 	// Supporting services ----------------------------------------------------
 
 	// Validator --------------------------------------------------------------
+	@Autowired
 	private Validator			validator;
 
 
@@ -84,10 +85,10 @@ public class BannerService {
 		return this.findAll().iterator().next();
 	}
 
-	public Banner reconstruct(BannerForm bannerForm, BindingResult binding) {
-		Banner result = this.create();
+	public Banner reconstruct(final BannerForm bannerForm, final BindingResult binding) {
+		final Banner result = this.getOnlyBanner();
 		result.setUrl(bannerForm.getUrl());
-		validator.validate(result, binding);
-		return this.save(result);
+		this.validator.validate(result, binding);
+		return result;
 	}
 }

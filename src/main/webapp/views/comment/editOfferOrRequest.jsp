@@ -10,7 +10,7 @@
 
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="comment/${actor.id}/register.do"
+<form:form action="comment/${offerOrRequest.id}/registerOfferOrRequest.do"
 	modelAttribute="comment">
 	
 	<acme:textbox code="comment.title" path="title"/>		

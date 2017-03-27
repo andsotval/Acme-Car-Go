@@ -34,14 +34,14 @@ public class BannerAdministratorController extends AbstractController {
 		ModelAndView result;
 		final Banner banner = this.bannerService.getOnlyBanner();
 		result = new ModelAndView("banner/edit");
-		result.addObject("banner", banner);
+		result.addObject("bannerForm", banner);
 		return result;
 
 	}
 
 	// Register ----------------------------------------------------------------
 	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(BannerForm bannerForm,BindingResult binding) {
+	public ModelAndView save(final BannerForm bannerForm, final BindingResult binding) {
 		ModelAndView result;
 		final Banner banner;
 

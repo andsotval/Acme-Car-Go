@@ -8,10 +8,7 @@
 
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="banner/administrator/register.do" modelAttribute="banner">
-
-	<form:hidden path="id" />
-	<form:hidden path="version" />
+<form:form action="banner/administrator/register.do" modelAttribute="bannerForm">
 
 	<acme:textbox code="banner.url" path="url"/>
 	
